@@ -18,7 +18,7 @@ void selectSort(vector<int> &arr){
 
 int main(){
     vector<int> nums = {9, 3, 19, 0, 5, 12, 1, 0};
-
+    
     selectSort(nums);
 
     for(auto x : nums){

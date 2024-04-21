@@ -8,11 +8,11 @@ vector<int> findMissing(int a[], int b[], int n, int m)
 	    vector<int>res;
 	    
 	    unordered_map<int, int> mp;
+		unordered_map<int, int> mp1;
 	    
 	    for(int i = 0; i < m; i++){
 	        mp[b[i]]++;
 	    }
-
 	    for(int i = 0; i < n; i++){
 	        if(mp[a[i]] == 0) res.push_back(a[i]);
 	    }

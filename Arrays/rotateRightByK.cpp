@@ -2,6 +2,17 @@
 #include <vector>
 using namespace std;
 
+void reverse(vector<int> &arr, int start, int end){
+    while(start < end){
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+
+        start++;
+        end--;
+    }
+}
+
 void rotateK(vector<int> &arr, int k){
     int n = arr.size();
     if(n < 2) return;
@@ -25,36 +36,16 @@ void rotateK(vector<int> &arr, int k){
     // arr.insert(arr.end(), vec.begin(), vec.end());
 
     //OPTIMAL:->
-    for(int i = 0; i < (n-k)/2; i++){
-        // int temp = arr[i];
-        // arr[i] = arr[k-i];
-        // arr[k-i] = temp;
-
-        swap(arr[i], arr[k-i]);
-    }
-
-    for(int i = n-k; i < n/2; i++){
-        // int temp = arr[i];
-        // arr[i] = arr[n-1-i];
-        // arr[n-1-i] = temp;
-
-        swap(arr[i], arr[n-1-i]);
-    }
-
-    for(int i = 0; i < n/2; i++){
-        // int temp = arr[i];
-        // arr[i] = arr[n-1-i];
-        // arr[n-1-i] = arr[i];
-
-        swap(arr[i], arr[n-1-i]);
-    }
-
+    reverse(arr, 0, n-k-1);
+    reverse(arr, n-k, n-1);
+    reverse(arr, 0, n-1);
+    
     return;
 }
 
 int main(){
     vector<int> nums = {1,2,3,4,5,6,7};
-    int k = 7;
+    int k = 9;
 
     rotateK(nums, k);
 

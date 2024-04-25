@@ -1,8 +1,9 @@
 #include<iostream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
-int longestSubarray(vector<int> nums, int k){
+int longestSubarray(vector<int> nums, int k){ // Optimal only when elements are positive.
     int left = 0; 
     int maxLen = 0;
     int sum = 0;
@@ -20,6 +21,29 @@ int longestSubarray(vector<int> nums, int k){
         }
     }
     return maxLen;
+}
+
+int longestSubArraySum(vector<int> &nums, int k){ // optimal when elements are positive and(or) negative.
+    unordered_map<int, int> mp;
+
+    int prefixSum = 0;
+    int maxLen = 0;
+
+    for(int i = 0; i < nums.size(); i++){
+        prefixSum += nums[i];
+
+        if(prefixSum == k){
+            maxLen = i+1;
+        }
+
+        if(mp.find(prefixSum - k)!= mp.end()){
+            maxLen = max(maxLen, i - mp[prefixSum - k]);
+        }
+
+        if(mp.find(prefixSum) == mp.end()){
+            mp[nums[i]] = i;
+        }
+    }
 }
 
 int main(){

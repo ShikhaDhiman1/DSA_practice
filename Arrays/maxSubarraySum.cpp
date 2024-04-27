@@ -39,7 +39,7 @@ int maxSubarraySum(vector<int> &nums){
     //     }
     //     if(sum < 0){
     //         sum = 0;
-    //         start++;
+    //         start = i+1;
     //     }
     // }
     // cout<<start<<", "<<end<<"\n";

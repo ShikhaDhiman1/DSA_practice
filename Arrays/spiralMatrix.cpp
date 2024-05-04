@@ -17,19 +17,20 @@ vector<int> spiralMatrix(vector<vector<int>>&matrix) {
             ans.push_back(matrix[top][j]);
         }
         top++;
+        
         for(int i = top; i <= bottom; i++){
             ans.push_back(matrix[i][right]);
         }
         right--;
 
-        if(top <= bottom){
+        if(top <= bottom){  // when there is only one row to print
             for(int j = right; j >= left; j--){
                 ans.push_back(matrix[bottom][j]);
             }
             bottom--;
         }
-
-        if(left <= right){
+       
+        if(left <= right){ // when there is only one column to print
             for(int i = bottom; i >= top; i--){
                 ans.push_back(matrix[i][left]);
             }

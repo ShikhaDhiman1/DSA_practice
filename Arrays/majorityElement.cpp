@@ -20,7 +20,7 @@ int majorElement2(vector<int> nums){
     return nums[n/2];
 }
 
-// Moore's 
+// Moore's Voting algorithm
 int majorElement3(vector<int> &nums){
     int count = 0;
     int candidate = nums[0];
@@ -28,9 +28,9 @@ int majorElement3(vector<int> &nums){
     for(int i = 0; i < nums.size(); i++){
         if(count == 0){
             candidate = nums[i];
+            count = 1;
         }
-
-        if(nums[i] == candidate){
+        else if(nums[i] == candidate){
             count++;
         }else{
             count--;

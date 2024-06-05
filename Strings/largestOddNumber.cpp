@@ -33,5 +33,7 @@ int main(){
     string num = "567892";
     cout<<largestOdd(num)<<"\n";
     cout<<largestOdd2(num)<<"\n";
+    cout<<'e' - 'a'<<"\n"<<'g' - 'd'<<"\n";
+    cout<<('g' - 'a')<<"\n";
     return 0;
 }

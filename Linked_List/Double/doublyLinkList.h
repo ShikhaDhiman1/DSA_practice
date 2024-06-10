@@ -1,20 +1,20 @@
 #include <iostream>
 using namespace std;
 
-class node{
+class Node{
     public:
     int data;
-    node* next;
-    node* previous;
+    Node* next;
+    Node* prev;
 
-    node(int val){
+    Node(int val){
         data = val;
         next = NULL;
-        previous = NULL;
+        prev = NULL;
     }
 };
 
-int size(node* head){
+int size(Node* head){
     int len = 0;
     while(head != NULL){
         len++;
@@ -23,99 +23,99 @@ int size(node* head){
     return len;
 }
 
-void insertAtHead(node* &head, int val){
-    node* n = new node(val);
+void insertAtHead(Node* &head, int val){
+    Node* n = new Node(val);
     // if(head == NULL){
     //     head = n;
     //     return;
     // }
     n->next = head;
     if(head != NULL){
-        head->previous = n;
+        head->prev = n;
     }
     head = n;
 
     // return;
 }
 
-void insertAtTail(node* &head, int val){
-    node* n = new node(val);
+void insertAtTail(Node* &head, int val){
+    Node* n = new Node(val);
     if(head == NULL){
         // head = n;
         // return;
         insertAtHead(head, val);
         return;
     }
-    node* temp = head;
+    Node* temp = head;
     while(temp->next != NULL){
         temp = temp->next;
     }
     temp->next = n;
-    n->previous = temp;
+    n->prev = temp;
     return;
 }
 
-void insertInbetween(node* &head, int val, int pos){
-    node* n  = new node(val);
+void insertInbetween(Node* &head, int val, int pos){
+    Node* n  = new Node(val);
     int count = 1;
-    node* temp = head;
+    Node* temp = head;
     while(count < pos-1){
         count++;
         if(temp->next == NULL){
-            temp->next = new node(0);
+            temp->next = new Node(0);
         }
         temp = temp->next;
     }
     n->next = temp->next;
     temp->next = n;
-    n->previous = temp;
+    n->prev = temp;
     return;
 }
 
-void deleteNode(node* &head, int pos){
+void deleteNode(Node* &head, int pos){
     if(pos > size(head)){
         cout<<"Position Not Found!\n";
         return;
     }
     // if(head == NULL)
-    node* temp = head;
+    Node* temp = head;
     int count = 1;
     while(count < pos-1){
         temp = temp->next;
         count++;
     }
-    node* todelete = temp->next;
+    Node* todelete = temp->next;
     temp->next = temp->next->next;
-    temp->next->previous = temp;
+    temp->next->prev = temp;
     delete todelete;
     return;
 }
 
-void deleteAtHead(node* &head){
+void deleteAtHead(Node* &head){
     if(head == NULL || head->next == NULL){
         return;
     }
-    node* todelete = head;
-    // head->next->previous = NULL;
+    Node* todelete = head;
+    // head->next->prev = NULL;
     head = head->next;
     delete todelete;
     return;
 }
 
-void deleteAtTail(node* &head){
-    node* temp = head;
+void deleteAtTail(Node* &head){
+    Node* temp = head;
     while(temp->next != NULL){
         temp = temp->next;
     }
-    temp->previous->next = NULL;
+    temp->prev->next = NULL;
     delete temp;
     return;
 }
 
-void display(node* &head){
+void display(Node* &head){
     cout<<"\nDoubly Linked List is: \n";
 
-    node* temp = head;
+    Node* temp = head;
 
     while(temp != NULL){
         if(temp->next != NULL){

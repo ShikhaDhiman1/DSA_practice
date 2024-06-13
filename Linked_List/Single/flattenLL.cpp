@@ -80,16 +80,16 @@ Node* flattenList2(Node* root){
 
 int main(){
     Node* head = new Node(5);
-    head->child = new Node(14);
+    head->bottom = new Node(14);
     
     head->next = new Node(10);
-    head->next->child = new Node(4);
+    head->next->bottom = new Node(4);
     
     head->next->next = new Node(12);
-    head->next->next->child = new Node(20);
-    head->next->next->child->child = new Node(13);
+    head->next->next->bottom = new Node(20);
+    head->next->next->bottom->bottom = new Node(13);
     
     head->next->next->next = new Node(7);
-    head->next->next->next->child = new Node(17);
+    head->next->next->next->bottom = new Node(17);
     return 0;
 }

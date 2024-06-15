@@ -2,6 +2,7 @@
 #include <stack>
 using namespace std;
 
+// approach 1==========================================
 void insertSorted(stack<int> *st, int temp){
     if((*st).empty() || temp >= (*st).top()){
         (*st).push(temp);
@@ -13,24 +14,23 @@ void insertSorted(stack<int> *st, int temp){
     insertSorted(st, temp);
     (*st).push(temp2);
 }
-void sort(stack<int> &st){
+void sort2(stack<int> &st){
     if(st.size() <= 1) return;
 
     int temp = st.top();
     st.pop();
-    sort(st);
-    st.push(temp);
+    sort2(st);
 
     insertSorted(&st, temp);
 }
 
+// approach 2=========================================
 void sort(stack<int> &st){
     if(st.size() <= 1) return;
 
     int temp = st.top();
     st.pop();
     sort(st);
-    st.push(temp);
 
     if(temp >= st.top()){
         st.push(temp);
@@ -45,5 +45,20 @@ void sort(stack<int> &st){
 }
 
 int main(){
+    stack<int> st;
+    st.push(10);
+    st.push(2);
+    st.push(0);
+    st.push(4);
+    st.push(1);
+
+    sort(st);
+    // sort2(st);
+    
+    while(!st.empty()){
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+    cout<<"\n";
     return 0;
 }

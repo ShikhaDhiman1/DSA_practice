@@ -4,6 +4,10 @@
 #include <algorithm>
 using namespace std;
 
+/*Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
+Each number in candidates may only be used once in the combination.
+Note: The solution set must not contain duplicate combinations.*/
+
 void getSubsets(int i, vector<int> candidates, int target, set<vector<int>> &ds, vector<int> vec){
     if(i == candidates.size()){
         if(target == 0){

@@ -14,7 +14,5 @@ int main(){
     cin>>n;
     cout<<"\nFactorial of "<<n<<" is : "<<fact(n);
     cout<<endl<<endl;
-
-    cout<<sizeof(int)<<" "<<sizeof(long)<<" "<<sizeof(long long)<<endl;
-    return 0;
+    return 0;   
 }

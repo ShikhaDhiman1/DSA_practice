@@ -2,6 +2,8 @@
 #include <vector>
 using namespace std;
 
+/*Given an array of N integers and Q queries of indices, print the number of next greater elements(NGEs) to the right of the given index element. */
+
 vector<int> count_NGE(vector<int> &arr, vector<int> &queries){
     vector<int> ans;
 

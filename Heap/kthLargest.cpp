@@ -20,24 +20,17 @@ public:
         return toStr;
     }
     string kthLargestNumber(vector<string>& nums, int k) {
-        // priority_queue<long long int> pq;
         priority_queue<string> pq;
         vector<string> :: iterator it;
         for(it = nums.begin(); it != nums.end(); it++){
-            // pq.push(stoll(*it, NULL, 10));
-            // pq.push(toInt(*it));
             pq.push(*it);
         }
-
         if(k == 1){
             return pq.top();
         }
-
         for(int i = 0; i < k-1; i ++){
             pq.pop();
         }
-
-        // return to_string(pq.top());
         return (pq.top());
     }
 };

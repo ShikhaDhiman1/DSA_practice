@@ -16,7 +16,7 @@ int minEnergyRecur(int ind, vector<int> &height, int k){
     return minCost;
 }
 
-int minEnergyMemo(int ind, vector<int> &height, int k, vector<int> &dp){
+int minEnergyMemo(int ind, vector<int> &height, int k, vector<int> &dp){ // T.C.=O(n * k), S.C. = O(n) + O(n)
     if(ind == 0) return 0;
     if(dp[ind] != -1) return dp[ind];
 
@@ -31,7 +31,7 @@ int minEnergyMemo(int ind, vector<int> &height, int k, vector<int> &dp){
     return dp[ind] = minCost;
 }
 
-int minEnergyTabu(vector<int> &height, int n, int k){
+int minEnergyTabu(vector<int> &height, int n, int k){ // T.C.=O(n * k), S.C. = O(n)
     vector<int> dp(n);
     dp[0] = 0;
 
